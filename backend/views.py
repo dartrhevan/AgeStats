@@ -24,6 +24,7 @@ def hello():
 
 @app.route('/people-list')
 def people_list():
-    return json.dumps(Man.select().get())
-
+    people = Man.select()
+    #print([{"name": m.name, "age": m.age} for m in people])
+    return json.dumps([{"name": m.name, "age": m.age} for m in people])
 

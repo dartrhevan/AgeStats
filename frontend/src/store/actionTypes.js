@@ -1,0 +1,1 @@
+module.exports = { ADD_MAN: "ADD_MAN", SET_STATE: "SET_STATE", SET_PEOPLE: "SET_PEOPLE" };

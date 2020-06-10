@@ -26,6 +26,9 @@
     <Compile Include="app.py" />
     <Compile Include="main.py" />
     <Compile Include="man.py" />
+    <Compile Include="statistics.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="views.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

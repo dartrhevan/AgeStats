@@ -2,6 +2,7 @@
 Routes and views for the flask application.
 """
 import json
+from statistics import Statistics
 from datetime import datetime
 from flask import render_template
 from app import app
@@ -35,8 +36,6 @@ def root():
 def test():
     return "Hi!"
 
-print(re.findall('a', 'asfra'))
-
 @app.route('/people-list',  methods=["POST"])
 def people_list():
     people = Man.select()
@@ -49,9 +48,11 @@ def people_list():
         min = int(request.form['min'])
         max = int(request.form['max'])
     except ValueError:
-        make_response('{"message":"Incorrect params"}', 400)
+        return make_response('{"message":"Incorrect params"}', 400)
     people = [{"name": m.name, "age": m.age} for m in people 
                        if m.age > min and m.age < max and (pattern == '' or len(re.findall(pattern, m.name)) != 0)]
+    stats = Statistics([m['age'] for m in people])
     #TODO: calc stats
-    return json.dumps({'people': people})
+    return json.dumps({'people': people, 'statistics': { 'avveredge': stats.get_avg(), 
+                       'dispersion': stats.get_dispersion(), 'deviation': stats.get_avg_deviation(), 'mode': stats.get_mode()}})
 

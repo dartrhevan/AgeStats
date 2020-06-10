@@ -2,16 +2,22 @@ import React from 'react';
 import {BrowserRouter , Route , Switch} from 'react-router-dom'
 import './App.css';
 import { connect } from "react-redux";
-import actions from './store/actions'
+import * as actions from './store/actions'
+import AddMan from "./Components/AddMan";
+import ListPeople from "./Components/ListPeople";
+import Header from "./Components/Header";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
+      <Header/>
       <BrowserRouter>
         <Switch>
-
+            <Route component={AddMan} exact path='/add'/>
+            <Route component={ListPeople} exact path='/people-list'/>
+            <div className='content'>
+                Hello world!
+            </div>
         </Switch>
       </BrowserRouter>
       <footer>

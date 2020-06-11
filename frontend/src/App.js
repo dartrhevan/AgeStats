@@ -9,7 +9,6 @@ import Header from "./Components/Header";
 
 class App extends React.Component {
     render() {
-        console.log(this.props)
         return (
             <div className="App">
                 <Header/>

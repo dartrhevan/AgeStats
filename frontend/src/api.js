@@ -8,8 +8,9 @@ export async function uploadData(name , age) {
     return fetch('/api/save' , {
         method: 'POST' ,
         body: formData
-    }).then(r => r.json())
-        .catch(e => console.log(e));
+    })
+        .then(() => alert("Success"))
+        .catch(e => alert(e));
 }
 
 export async function getData(pattern = '', min = 0, max = 110) {

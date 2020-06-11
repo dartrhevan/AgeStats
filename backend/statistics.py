@@ -29,7 +29,7 @@ class Statistics:
         elif count % 2:
             return (self.__data[int(count / 2)] + self.__data[int(count / 2) - 1]) / 2
         else:
-            return self.__data[count / 2]
+            return self.__data[int(count / 2)]
 
     def get_avg_deviation(self):
         return self.__div

@@ -14,13 +14,14 @@ def_max = 110
 
 @app.route('/api/save', methods=["POST"])
 def save():
-    age
+    age = 0
     print(request.form['name'])
+    print(request.form['age'])
     try:
         age = int(request.form['age'])
     except ValueError:
         make_response('{"message":"Incorrect age"}', 400)
-    obj = Man.create(name=request.form['name'], age=age)
+    obj = Man.create(name=request.form['name'], age = age)
     if age < def_min or age > def_max:
         return make_response('{"message":"Incorrect age"}', 400)
     return make_response("", 200)

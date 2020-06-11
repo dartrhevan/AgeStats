@@ -1,1 +1,1 @@
-module.exports = { ADD_MAN: "ADD_MAN", SET_STATE: "SET_STATE", SET_PEOPLE: "SET_PEOPLE" };
+module.exports = { ADD_MAN: "ADD_MAN", SET_STATE: "SET_STATE", SELECT_PEOPLE: "SELECT_PEOPLE" };

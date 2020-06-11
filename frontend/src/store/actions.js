@@ -7,13 +7,16 @@ export function addMan(man) {
     }
 }
 
-export function setPeople(people) {
+export function selectPeople(pattern, min, max) {
     return {
-        type: actionTypes.ADD_MAN,
-        people
+        type: actionTypes.SELECT_PEOPLE,
+        select: {
+            pattern,
+            min,
+            max
+        }
     }
 }
-
 
 export function setState() {
     return {

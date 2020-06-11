@@ -2,7 +2,7 @@
 class Statistics:
     def __init__(self, data):
         data.sort()
-        self.__data = data#.sort()
+        self.__data = data
         self.__sum = sum(data)
         self.__avg = self.__sum / len(self.__data)
         self.__disp = sum([i**2 for i in self.__data]) - self.__avg ** 2

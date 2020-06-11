@@ -1,16 +1,27 @@
-//TODO: implement
-export function uploadData(name, age) {
-    const formData  = new FormData();
 
-    formData.append('name', name);
-    formData.append('age', age);
-    return fetch('/api/save', {
-        method: 'POST',
+export async function uploadData(name , age) {
+    const formData = new FormData();
+
+    formData.append('name' , name);
+    formData.append('age' , age);
+
+    return fetch('/api/save' , {
+        method: 'POST' ,
         body: formData
-    });
+    }).then(r => r.json())
+        .catch(e => console.log(e));
 }
 
-export function getData({pattern, min, max}) {
-    return {"people": [{"name": "Alisa", "age": 27}], "statistics": {"avveredge": 27.0, "dispersion": 0.0, "deviation": 0.0,
-            "mode": 27.0}}
+export async function getData(pattern = '', min = 0, max = 110) {
+    const formData  = new FormData();
+
+    formData.append('pattern', pattern);
+    formData.append('min', min.toString());
+    formData.append('max', max.toString());
+
+    return fetch('/api/people-list', {
+        method: 'POST',
+        body: formData
+    }).then(r => r.json())
+        .catch(e => console.log(e));
 }

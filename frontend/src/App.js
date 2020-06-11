@@ -15,10 +15,10 @@ class App extends React.Component {
                 <Header/>
                 <BrowserRouter>
                     <Switch>
-                        <Route render={() => <AddMan {...this.props} />} exact path='/add'/>
+                        <Route component={AddMan} exact path='/add'/>
                         <Route render={() => <ListPeople {...this.props} />} exact path='/people-list'/>
                         <div className='content'>
-                            Hello world!
+                            <b>Age statistic collector</b>
                         </div>
                     </Switch>
                 </BrowserRouter>
@@ -32,7 +32,8 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        people: state.people
+        people: state.people,
+        select: state.select
     };
 }
 

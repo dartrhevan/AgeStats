@@ -1,33 +1,41 @@
 import React from "react";
 
+import { getData } from '../api'
+
 export default class AddMan extends React.Component {
 
     componentDidMount() {
-        this.props.selectPeople()
+        document.getElementById('min').value = 0;
+        document.getElementById('max').value = 110;
+        getData()
+            .then(d =>
+                this.props.setPeople(d.people, d.statistics))
     }
 
     apply = () =>
-        this.props.selectPeople(document.getElementById('pattern').value,
-            document.getElementById('min').value, document.getElementById('max').value);
+        getData(document.getElementById('pattern').value ,
+            document.getElementById('min').value , document.getElementById('max').value)
+            .then(d =>
+                this.props.setPeople(d.people, d.statistics));
 
     render() {
         console.log(this.props);
         return <div className='content'>
             <div align='center'>
                 <h2><b>Filter</b></h2>
-                Pattern: <input id='pattern' value='' />
+                Pattern: <input id='pattern' />
                 <br/>
-                Min age: <input value={0} id='min' type='number'/>
+                Min age: <input id='min' type='number'/>
                 <br/>
-                Max age: <input value={110} id='max' type='number'/>
+                Max age: <input id='max' type='number'/>
                 <br/>
-                <button onClick={this.apply}>Apply</button>
+                <button onClick={this.apply} className='link'>Apply</button>
             </div>
             <hr/>
             <h4>
                 Data:
             </h4>
-            <table border='1'>
+            <table border='1' bgcolor='black'>
                 <thead>
                     <tr>
                         <td>

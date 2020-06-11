@@ -1,20 +1,10 @@
 import * as actionTypes from "./actionTypes";
 
-export function addMan(man) {
+export function setPeople(people, statistics) {
     return {
-        type: actionTypes.ADD_MAN,
-        man
-    }
-}
-
-export function selectPeople(pattern, min, max) {
-    return {
-        type: actionTypes.SELECT_PEOPLE,
-        select: {
-            pattern,
-            min,
-            max
-        }
+        type: actionTypes.SET_PEOPLE,
+        people,
+        statistics
     }
 }
 

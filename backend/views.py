@@ -8,7 +8,6 @@ from flask import render_template
 from app import app
 from flask import request, make_response
 from man import Man
-import re
 
 def_min = 0
 def_max = 110
@@ -45,7 +44,9 @@ def people_list():
         max = int(request.form['max'])
     except ValueError:
         return make_response('{"message":"Incorrect params"}', 400)
-    peopleData = Man.select().where(Man.age > min and Man.age < max and (pattern == '' or len(re.findall(pattern, Man.name)) != 0))
+    print(min)
+    #Man.age.between(min, max)
+    peopleData = Man.select().where(Man.age.between(min, max) & (pattern == '' or Man.name.contains(pattern)))
     people = [{"name": m.name, "age": m.age} for m in peopleData]
     stats = Statistics([m['age'] for m in people])
     return json.dumps({'people': people, 'statistics': { 'avveredge': stats.get_avg(), 

@@ -1,5 +1,6 @@
 :root {
   --background: linear-gradient(150deg, white, white, lightgray);
+  --std-shadow: lightgrey 1px 1px 1px 1px;
 }
 
 .App {
@@ -19,6 +20,30 @@ header, footer, .content {
 header h2 {
   margin: 0;
   flex-grow: 1;
+}
+
+input:focus {
+  outline: 1px solid darkgray;
+}
+
+
+td {
+  min-width: 70px;
+  background-color: white;
+}
+
+button.link {
+  font-size: 15px;
+  margin: 10px;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 9px;
+  border: none;/*1px solid darkgray;*/
+  box-shadow: var(--std-shadow);
+}
+
+button.link:focus {
+  outline: none;
 }
 
 header {

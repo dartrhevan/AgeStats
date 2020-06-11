@@ -45,8 +45,6 @@ def people_list():
         max = int(request.form['max'])
     except ValueError:
         return make_response('{"message":"Incorrect params"}', 400)
-    print(min)
-    #Man.age.between(min, max)
     peopleData = Man.select().where(Man.age.between(min, max) & (pattern == '' or Man.name.contains(pattern)))
     people = [{"name": m.name, "age": m.age} for m in peopleData]
     stats = Statistics([m['age'] for m in people])

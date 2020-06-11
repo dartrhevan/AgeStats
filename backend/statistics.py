@@ -1,3 +1,5 @@
+from math import sqrt
+
 
 class Statistics:
     def __init__(self, data):
@@ -6,8 +8,8 @@ class Statistics:
         self.__sum = sum(data)
         if len(data):
             self.__avg = self.__sum / len(self.__data)
-            self.__disp = sum([i**2 for i in self.__data]) - self.__avg ** 2
-            self.__div = self.__disp ** 2
+            self.__disp = sum([i**2 for i in self.__data])  / len(self.__data) - self.__avg ** 2
+            self.__div = sqrt(self.__disp)
         else:
             self.__avg = 0
             self.__disp = 0

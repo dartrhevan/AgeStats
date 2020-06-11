@@ -1,4 +1,5 @@
 import actionTypes from './actionTypes';
+import React from "react";
 
 export default function reducer(state = {}, action) {
     switch (action.type) {
@@ -10,7 +11,12 @@ export default function reducer(state = {}, action) {
         case actionTypes.SET_STATE:
             return {
                 people: [],
-                statistics: {}
+                statistics: {
+                    average: 0,
+                    dispersion: 0,
+                    deviation: 0,
+                    mode: 0
+                }
             }
     }
 }

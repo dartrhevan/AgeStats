@@ -30,8 +30,19 @@ export default class AddMan extends React.Component {
                 Max age: <input id='max' type='number'/>
                 <br/>
                 <button onClick={this.apply} className='link'>Apply</button>
+                <hr/>
+                Count: {this.props.people.length}
+                <br/>
+                Average age: {this.props.statistics.average}
+                <br/>
+                Dispersion: {this.props.statistics.dispersion}
+                <br/>
+                Deviation: {this.props.statistics.deviation}
+                <br/>
+                Mode: {this.props.statistics.mode}
+                <hr/>
             </div>
-            <hr/>
+
             <h4>
                 Data:
             </h4>

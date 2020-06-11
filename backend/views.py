@@ -50,6 +50,6 @@ def people_list():
     peopleData = Man.select().where(Man.age.between(min, max) & (pattern == '' or Man.name.contains(pattern)))
     people = [{"name": m.name, "age": m.age} for m in peopleData]
     stats = Statistics([m['age'] for m in people])
-    return json.dumps({'people': people, 'statistics': { 'avveredge': stats.get_avg(), 
+    return json.dumps({'people': people, 'statistics': { 'average': stats.get_avg(), 
                        'dispersion': stats.get_dispersion(), 'deviation': stats.get_avg_deviation(), 'mode': stats.get_mode()}})
 

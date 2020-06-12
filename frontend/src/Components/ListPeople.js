@@ -8,15 +8,23 @@ export default class AddMan extends React.Component {
         document.getElementById('min').value = 0;
         document.getElementById('max').value = 110;
         getData()
-            .then(d =>
-                this.props.setPeople(d.people, d.statistics))
+            .then(d => {
+                if(d.message)
+                    alert(d.message);
+                else
+                    this.props.setPeople(d.people , d.statistics);
+            })
     }
 
     apply = () =>
         getData(document.getElementById('pattern').value ,
             document.getElementById('min').value , document.getElementById('max').value)
-            .then(d =>
-                this.props.setPeople(d.people, d.statistics));
+            .then(d => {
+                if(d.message)
+                    alert(d.message);
+                else
+                    this.props.setPeople(d.people , d.statistics);
+            });
 
     render() {
         console.log(this.props);

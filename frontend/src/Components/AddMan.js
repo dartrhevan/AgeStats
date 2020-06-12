@@ -2,7 +2,11 @@ import React from "react";
 import { uploadData } from '../api'
 
 const upload = () =>
-        uploadData(document.getElementById('name').value, document.getElementById('age').value);
+        uploadData(document.getElementById('name').value, document.getElementById('age').value)
+            .then(r => {
+                if(r.message)
+                    alert(r.message);
+            });
 
 export default function AddMan() {
     return (<div className='content'>

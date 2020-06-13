@@ -67,4 +67,4 @@ def update():
         return make_response('{"message":"Incorrect params"}', 400)
     if Man.update({Man.age: age, Man.name: name}).where(Man.id == id).execute() != 1:
         return make_response('{"message":"Incorrect params"}', 400)
-    return people_list()
+    return make_response('', 200)

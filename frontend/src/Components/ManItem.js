@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { deleteMan , updateMan , uploadData } from "../api";
+
 export default class ManItem extends React.Component {
     constructor() {
         super();
@@ -9,16 +11,23 @@ export default class ManItem extends React.Component {
     }
 
     toggle = () => this.setState({editing: !this.state.editing}, () => {
-
+        this.nameRef.current.value = this.props.man.name;
+        this.ageRef.current.value = this.props.man.age;
     });
 
-    delete = () => {
+    delete = () => deleteMan(this.props.man.id)
+        .then(r => {
+            if(r && r.message)
+                alert(r.message);
+            //TODO: removal
+        });
 
-    };
-
-    send = () => {
-
-    };
+    send = () => updateMan(this.props.man.id, this.nameRef.current.value, this.ageRef.current.value)
+        .then(r => {
+            if(r && r.message)
+                alert(r.message);
+            //TODO: update
+        });
 
     render() {
         return this.state.editing ?
@@ -27,7 +36,7 @@ export default class ManItem extends React.Component {
                         <input ref={this.nameRef}/>
                     </td>
                     <td>
-                        <input ref={this.ageRef}/>
+                        <input type='number' ref={this.ageRef}/>
                     </td>
                     <td>
                         <button className='link' onClick={this.send}>Submit</button>

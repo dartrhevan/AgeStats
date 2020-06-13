@@ -1,6 +1,6 @@
 :root {
   --background: linear-gradient(150deg, white, white, lightgray);
-  --std-shadow: lightgrey 1px 1px 1px 1px;
+  --std-shadow: lightgrey 0 0 2px 2px;
 }
 
 .App {
@@ -13,7 +13,6 @@
 }
 
 header, footer, .content {
-  /*border: 1px solid darkgrey;*/
   background: var(--background);
 }
 
@@ -38,7 +37,7 @@ button.link {
   padding: 5px;
   cursor: pointer;
   border-radius: 9px;
-  border: none;/*1px solid darkgray;*/
+  border: none;
   box-shadow: var(--std-shadow);
 }
 
@@ -49,7 +48,7 @@ button.link:focus {
 header {
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
-  box-shadow: lightgray 1px 1px 1px 1px;
+  box-shadow: darkgray 0 0 3px 3px;
   display: flex;
   flex-direction: row;
 }
@@ -83,11 +82,11 @@ header a:hover {
 footer {
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
-  box-shadow: lightgray -1px -1px 1px 1px;
+  box-shadow: darkgray 0 0 3px 3px;
 }
 
 .content {
-  box-shadow: lightgray 1px 1px 1px 1px;
+  box-shadow: darkgray 0 0 3px 3px;
   border-radius: 7px;
   display: flex;
   flex-direction: column;
@@ -95,4 +94,5 @@ footer {
   align-items: center;
   font-size: 1.5em;
   margin: 15px 0;
+  padding: 20px;
 }

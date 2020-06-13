@@ -15,8 +15,6 @@ def_max = 110
 @app.route('/api/save', methods=["POST"])
 def save():
     age = 0
-    print(request.form['name'])
-    print(request.form['age'])
     try:
         age = int(request.form['age'])
     except ValueError:
@@ -46,8 +44,27 @@ def people_list():
     except ValueError:
         return make_response('{"message":"Incorrect params"}', 400)
     peopleData = Man.select().where(Man.age.between(min, max) & (pattern == '' or Man.name.contains(pattern)))
-    people = [{"name": m.name, "age": m.age} for m in peopleData]
+    people = [{"name": m.name, "age": m.age, "id": m.id } for m in peopleData]
     stats = Statistics([m['age'] for m in people])
     return json.dumps({'people': people, 'statistics': { 'average': stats.get_avg(), 
                        'dispersion': stats.get_dispersion(), 'deviation': stats.get_avg_deviation(), 'mode': stats.get_mode()}})
 
+@app.route('/api/remove/<id>',  methods=["DELETE"])
+def remove(id): 
+    entity = Man.get(Man.id == id)
+    entity.delete_instance()
+    return make_response('', 200)
+
+@app.route('/api/update',  methods=["PUT"])
+def update(): 
+    id = None
+    age = None
+    name = request.form['name']
+    try:
+        id = int(request.form['id'])
+        age = int(request.form['age'])
+    except ValueError:
+        return make_response('{"message":"Incorrect params"}', 400)
+    if Man.update({Man.age: age, Man.name: name}).where(Man.id == id).execute() != 1:
+        return make_response('{"message":"Incorrect params"}', 400)
+    return people_list()

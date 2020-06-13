@@ -4,7 +4,7 @@ import { uploadData } from '../api'
 const upload = () =>
         uploadData(document.getElementById('name').value, document.getElementById('age').value)
             .then(r => {
-                if(r.message)
+                if(r && r.message)
                     alert(r.message);
             });
 

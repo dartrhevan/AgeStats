@@ -1,6 +1,7 @@
 import React from "react";
 
 import { getData } from '../api'
+import ManItem from "./ManItem";
 
 export default class AddMan extends React.Component {
 
@@ -9,7 +10,7 @@ export default class AddMan extends React.Component {
         document.getElementById('max').value = 110;
         getData()
             .then(d => {
-                if(d.message)
+                if(d && d.message)
                     alert(d.message);
                 else
                     this.props.setPeople(d.people , d.statistics);
@@ -63,20 +64,12 @@ export default class AddMan extends React.Component {
                         <td>
                             Age
                         </td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
-                {this.props.people.map(m => (
-                    <>
-                    <tr>
-                    <td>
-                        {m.name}
-                    </td>
-                    <td>
-                        {m.age}
-                    </td>
-                </tr>
-                </>))}
+                {this.props.people.map(m => <ManItem man={m} />)}
                 </tbody>
             </table>
         </div>;

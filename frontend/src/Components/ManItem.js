@@ -19,14 +19,16 @@ export default class ManItem extends React.Component {
         .then(r => {
             if(r && r.message)
                 alert(r.message);
-            //TODO: removal
+            else  window.location.href=' ';
+            //this.props.setPeople(r.people, r.statistics)
         });
 
     send = () => updateMan(this.props.man.id, this.nameRef.current.value, this.ageRef.current.value)
         .then(r => {
             if(r && r.message)
                 alert(r.message);
-            //TODO: update
+            else
+                window.location.href=' ';
         });
 
     render() {

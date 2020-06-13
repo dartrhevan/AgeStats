@@ -69,7 +69,7 @@ export default class AddMan extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                {this.props.people.map(m => <ManItem {...this.props} man={m} />)}
+                {this.props.people.map(m => <ManItem key={m.id} {...this.props} man={m} />)}
                 </tbody>
             </table>
         </div>;

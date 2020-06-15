@@ -6,6 +6,8 @@ const upload = () =>
             .then(r => {
                 if(r && r.message)
                     alert(r.message);
+                else
+                    alert('Successful upload')
             });
 
 export default function AddMan() {

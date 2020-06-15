@@ -6,7 +6,8 @@ export default function reducer(state = {}, action) {
         case actionTypes.SET_PEOPLE:
             return {
                 people: action.people,
-                statistics: action.statistics
+                statistics: action.statistics,
+                select: state.select
             };
         case actionTypes.SET_STATE:
             return {
@@ -16,7 +17,17 @@ export default function reducer(state = {}, action) {
                     dispersion: 0,
                     deviation: 0,
                     mode: 0
+                },
+                select: {
+                    max: 110,
+                    min: 0,
+                    pattern: ''
                 }
-            }
+            };/*
+        case actionTypes.SELECT:
+            return {
+                ...state,
+                select: action.select
+            };*/
     }
 }

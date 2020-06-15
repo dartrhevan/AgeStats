@@ -85,6 +85,23 @@ footer {
   box-shadow: darkgray 0 0 3px 3px;
 }
 
+.arrow {
+  font-weight: bold;
+  font-size: 1.25em;
+  transition: color 0.4s;
+  color: rgba(110,110,110, 0.7);
+}
+
+.arrow:hover {
+  color: rgba(60,60,60, 0.7);
+  cursor: pointer;
+}
+
+.arrow:focus {
+  color: rgba(60,60,60, 0.7);
+  cursor: pointer;
+}
+
 .content {
   box-shadow: darkgray 0 0 3px 3px;
   border-radius: 7px;

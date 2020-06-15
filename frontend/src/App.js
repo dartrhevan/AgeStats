@@ -32,7 +32,8 @@ class App extends React.Component {
 function mapStateToProps(state) {
     return {
         people: state.people,
-        statistics: state.statistics
+        statistics: state.statistics,
+        select: state.select
     };
 }
 

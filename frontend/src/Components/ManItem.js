@@ -15,20 +15,27 @@ export default class ManItem extends React.Component {
         this.ageRef.current.value = this.props.man.age;
     });
 
-    delete = () => deleteMan(this.props.man.id)
+    delete = () => deleteMan(this.props.man.id, this.props.select)
+        .then(r => r.json())
         .then(r => {
             if(r && r.message)
                 alert(r.message);
-            else  window.location.href=' ';
-            //this.props.setPeople(r.people, r.statistics)
+            else  //window.location.href='
+            {
+                this.props.setPeople(r.people, r.statistics);
+                this.setState({editing: false});
+            }
         });
 
-    send = () => updateMan(this.props.man.id, this.nameRef.current.value, this.ageRef.current.value)
+    send = () => updateMan(this.props.man.id, this.nameRef.current.value, this.ageRef.current.value, this.props.select)
         .then(r => {
             if(r && r.message)
                 alert(r.message);
-            else
-                window.location.href=' ';
+            else {
+                this.props.setPeople(r.people , r.statistics);
+                //window.location.href=' ';
+                this.setState({editing: false});
+            }
         });
 
     render() {
@@ -55,10 +62,10 @@ export default class ManItem extends React.Component {
                         {this.props.man.age}
                     </td>
                     <td>
-                        <button onClick={this.toggle}>Edit</button>
+                        <span className='arrow' onClick={this.toggle}>&#9998;</span>
                     </td>
                     <td>
-                        <button onClick={this.delete}>X</button>
+                        <span className='arrow' onClick={this.delete}>X</span>
                     </td>
                 </tr>)
 

@@ -26,21 +26,34 @@ export async function getData(pattern = '', min = 0, max = 110) {
         .catch(e => console.log(e));
 }
 
-export async function deleteMan(id) {
+export async function deleteMan(id,  {pattern, min, max}) {
+
+    const formData = new FormData();
+
+    formData.append('pattern', pattern);
+    formData.append('min', min.toString());
+    formData.append('max', max.toString());
+
     return fetch('/api/remove/' + id, {
-        method: 'DELETE'
+        method: 'DELETE',
+        body: formData
     }).catch(e => console.log(e));
 }
 
-export async function updateMan(id, name, age) {
+export async function updateMan(id, name, age, {pattern, min, max}) {
     const formData = new FormData();
 
     formData.append('id' , id);
     formData.append('name' , name);
     formData.append('age' , age);
 
+
+    formData.append('pattern', pattern);
+    formData.append('min', min.toString());
+    formData.append('max', max.toString());
+
     return fetch('/api/update' , {
-        method: 'PUT' ,
+        method: 'PUT',
         body: formData
     }).then(r => r.json())
         .catch(e => console.log(e));

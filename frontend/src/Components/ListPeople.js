@@ -17,15 +17,18 @@ export default class AddMan extends React.Component {
             })
     }
 
-    apply = () =>
-        getData(document.getElementById('pattern').value ,
-            document.getElementById('min').value , document.getElementById('max').value)
+    apply = () => {
+        const pattern = document.getElementById('pattern').value,
+            min = document.getElementById('min').value,
+            max = document.getElementById('max').value;
+        return getData(pattern, min, max)
             .then(d => {
-                if(d.message)
+                if (d.message)
                     alert(d.message);
                 else
-                    this.props.setPeople(d.people , d.statistics);
+                    this.props.setPeople(d.people, d.statistics, {pattern, max, min});
             });
+    };
 
     render() {
         console.log(this.props);

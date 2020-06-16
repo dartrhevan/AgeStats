@@ -58,7 +58,7 @@ export default class AddMan extends React.Component {
             <h4>
                 Data:
             </h4>
-            <table border='1' bgcolor='black'>
+            <table cellSpacing='0'>
                 <thead>
                     <tr>
                         <td>

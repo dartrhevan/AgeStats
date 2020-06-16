@@ -22,13 +22,22 @@ header h2 {
 }
 
 input:focus {
-  outline: 1px solid darkgray;
+  box-shadow: rgba(150, 150, 150, 0.5) 0 0 4px 4px;
 }
 
 
 td {
-  min-width: 70px;
-  background-color: white;
+  min-width: 100px;
+}
+
+thead, tr:nth-of-type(2n) {
+  background-color: rgba(110, 110, 125, 0.35);
+  padding: 0;
+  margin: 0;
+}
+
+table {
+  border: 1px solid rgba(110, 110, 125, 0.35);
 }
 
 button.link {
@@ -52,6 +61,7 @@ header {
   display: flex;
   flex-direction: row;
 }
+
 header a:last-child {
   border-bottom-right-radius: 7px;
 }

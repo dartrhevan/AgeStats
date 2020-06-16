@@ -53,7 +53,7 @@ def people_list():
 def remove(id): 
     entity = Man.get(Man.id == id)
     entity.delete_instance()
-    return make_response('', 200)
+    return people_list()
 
 @app.route('/api/update',  methods=["PUT"])
 def update(): 
@@ -67,4 +67,4 @@ def update():
         return make_response('{"message":"Incorrect params"}', 400)
     if Man.update({Man.age: age, Man.name: name}).where(Man.id == id).execute() != 1:
         return make_response('{"message":"Incorrect params"}', 400)
-    return make_response('', 200)
+    return people_list()

@@ -14,10 +14,3 @@ export function setState() {
         type: actionTypes.SET_STATE
     }
 }
-/*
-export function select(select) {
-    return {
-      type: actionTypes.SELECT,
-      select
-    };
-}*/

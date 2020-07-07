@@ -10,10 +10,6 @@ class Man(Model):
     id = AutoField()
     name = CharField()
     age = IntegerField()
-    #def get_name(self):
-    #   return self.__name
-    #def get_age(self):
-    #    return self.__age
 
     class Meta:
         database = db 

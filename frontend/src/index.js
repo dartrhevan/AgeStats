@@ -5,7 +5,6 @@ import App from './App';
 import reducer from "./store/reducer";
 import { Provider } from "react-redux";
 const actions = require('./store/actions');
-//import * as serviceWorker from './serviceWorker';
 
 const redux = require('redux');
 

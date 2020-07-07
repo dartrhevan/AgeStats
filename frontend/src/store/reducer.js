@@ -23,11 +23,6 @@ export default function reducer(state = {}, action) {
                     min: 0,
                     pattern: ''
                 }
-            };/*
-        case actionTypes.SELECT:
-            return {
-                ...state,
-                select: action.select
-            };*/
+            };
     }
 }

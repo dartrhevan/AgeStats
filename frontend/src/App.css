@@ -123,3 +123,21 @@ footer {
   margin: 15px 0;
   padding: 20px;
 }
+
+@media (max-width: 1020px) {
+  .link {
+    font-size: 16px;
+  }
+
+  header h2 {
+    font-size: 18px;
+  }
+
+  td {
+    min-width: 75px;
+  }
+
+  td input {
+    width: 75px;
+  }
+}

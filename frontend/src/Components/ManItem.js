@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { deleteMan , updateMan , uploadData } from "../api";
+import { deleteMan , updateMan } from "../api";
 
 export default class ManItem extends React.Component {
     constructor() {
@@ -11,8 +11,10 @@ export default class ManItem extends React.Component {
     }
 
     toggle = () => this.setState({editing: !this.state.editing}, () => {
-        this.nameRef.current.value = this.props.man.name;
-        this.ageRef.current.value = this.props.man.age;
+        if(this.state.editing) {
+            this.nameRef.current.value = this.props.man.name;
+            this.ageRef.current.value = this.props.man.age;
+        }
     });
 
     delete = () => deleteMan(this.props.man.id, this.props.select)
@@ -20,7 +22,7 @@ export default class ManItem extends React.Component {
         .then(r => {
             if(r && r.message)
                 alert(r.message);
-            else  //window.location.href='
+            else
             {
                 this.props.setPeople(r.people, r.statistics);
                 this.setState({editing: false});
@@ -33,7 +35,6 @@ export default class ManItem extends React.Component {
                 alert(r.message);
             else {
                 this.props.setPeople(r.people , r.statistics);
-                //window.location.href=' ';
                 this.setState({editing: false});
             }
         });
@@ -68,6 +69,5 @@ export default class ManItem extends React.Component {
                         <span className='arrow' onClick={this.delete}>X</span>
                     </td>
                 </tr>)
-
     }
 }

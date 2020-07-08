@@ -7,7 +7,9 @@ from datetime import datetime
 from flask import render_template
 from app import app
 from flask import request, make_response
-from man import Man
+from manService import ManService
+
+manService = ManService()
 
 def_min = 0
 def_max = 110
@@ -19,7 +21,8 @@ def save():
         age = int(request.form['age'])
     except ValueError:
         make_response('{"message":"Incorrect age"}', 400)
-    obj = Man.create(name=request.form['name'], age = age)
+    manService.createNewMan(request.form['name'], age)
+        #obj = Man.create(name=request.form['name'], age = age)
     if age < def_min or age > def_max:
         return make_response('{"message":"Incorrect age"}', 400)
     return make_response("", 200)
@@ -43,16 +46,14 @@ def people_list():
         max = int(request.form['max'])
     except ValueError:
         return make_response('{"message":"Incorrect params"}', 400)
-    peopleData = Man.select().where(Man.age.between(min, max) & (pattern == '' or Man.name.contains(pattern)))
-    people = [{"name": m.name, "age": m.age, "id": m.id } for m in peopleData]
+    people = manService.getPeople(min, max, pattern)
     stats = Statistics([m['age'] for m in people])
     return json.dumps({'people': people, 'statistics': { 'average': stats.get_avg(), 
                        'dispersion': stats.get_dispersion(), 'deviation': stats.get_avg_deviation(), 'mode': stats.get_mode()}})
 
 @app.route('/api/remove/<id>',  methods=["DELETE"])
-def remove(id): 
-    entity = Man.get(Man.id == id)
-    entity.delete_instance()
+def remove(id):
+    manService.removeMan(id)
     return people_list()
 
 @app.route('/api/update',  methods=["PUT"])
@@ -65,6 +66,6 @@ def update():
         age = int(request.form['age'])
     except ValueError:
         return make_response('{"message":"Incorrect params"}', 400)
-    if Man.update({Man.age: age, Man.name: name}).where(Man.id == id).execute() != 1:
+    if manService.editMan(id, age, name):
         return make_response('{"message":"Incorrect params"}', 400)
     return people_list()

@@ -26,6 +26,9 @@
     <Compile Include="app.py" />
     <Compile Include="main.py" />
     <Compile Include="man.py" />
+    <Compile Include="manService.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="statistics.py">
       <SubType>Code</SubType>
     </Compile>

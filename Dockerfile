@@ -10,7 +10,11 @@ RUN apk add nodejs
 
 RUN apk add npm
 
-RUN npm install --prefix frontend && npm run build --prefix frontend
+WORKDIR /usr/src/app/frontend
+
+RUN npm install && npm run build
+
+WORKDIR /usr/src/app/backend
 
 RUN pip install --no-cache-dir -r requirements.txt
 

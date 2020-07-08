@@ -8,6 +8,8 @@ RUN apk update
 
 RUN apk add nodejs
 
+RUN apk add npm
+
 RUN npm install --prefix frontend && npm run build --prefix frontend
 
 RUN pip install --no-cache-dir -r requirements.txt

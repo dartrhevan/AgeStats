@@ -6,7 +6,7 @@ COPY . .
 
 RUN apk update
 
-RUN apk install nodejs
+RUN apk add nodejs
 
 RUN npm install --prefix frontend && npm run build --prefix frontend
 

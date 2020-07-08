@@ -22,7 +22,6 @@ def save():
     except ValueError:
         make_response('{"message":"Incorrect age"}', 400)
     manService.createNewMan(request.form['name'], age)
-        #obj = Man.create(name=request.form['name'], age = age)
     if age < def_min or age > def_max:
         return make_response('{"message":"Incorrect age"}', 400)
     return make_response("", 200)
@@ -31,10 +30,6 @@ def save():
 def root():
     return app.send_static_file('index.html')
 
-
-@app.route('/api/test')
-def test():
-    return "Hi!"
 
 @app.route('/api/people-list',  methods=["POST"])
 def people_list():

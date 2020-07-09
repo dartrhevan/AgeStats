@@ -32,3 +32,6 @@ WORKDIR /usr/src/app/backend
 #RUN pip install --no-cache-dir -r requirements.txt
 
 CMD [ "python", "./backend/main.py" ]
+
+EXPOSE 5555/tcp
+EXPOSE 80/tcp

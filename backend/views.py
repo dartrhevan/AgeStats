@@ -26,7 +26,10 @@ def save():
         return make_response('{"message":"Incorrect age"}', 400)
     return make_response("", 200)
 
-@app.route('/')
+
+@app.route( '/' )
+@app.route( '/people-list' )
+@app.route( '/add' )
 def root():
     return app.send_static_file('index.html')
 

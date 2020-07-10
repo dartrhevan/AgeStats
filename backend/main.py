@@ -4,8 +4,8 @@ if __name__ == '__main__':
     import os
     HOST = os.environ.get('SERVER_HOST', '0.0.0.0')
     try:
-        PORT = int(os.environ.get('PORT', '5555'))
+        PORT = int(os.environ.get('PORT', '80'))
     except ValueError:
-        PORT = 5555
+        PORT = 80
     app.run(HOST, PORT)
 

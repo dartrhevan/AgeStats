@@ -62,10 +62,10 @@ export default class AddMan extends React.Component {
                 <thead>
                     <tr>
                         <td>
-                            Name
+                            <b>Name</b>
                         </td>
                         <td>
-                            Age
+                            <b>Age<b/>
                         </td>
                         <td></td>
                         <td></td>

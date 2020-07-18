@@ -32,6 +32,11 @@ def save():
 @app.route( '/add' )
 def root():
     return app.send_static_file('index.html')
+    
+    
+@app.route( '/api/test' )
+def test():
+    return 'Hello from Fask!'
 
 
 @app.route('/api/people-list',  methods=["POST"])
@@ -48,7 +53,7 @@ def people_list():
     stats = Statistics([m['age'] for m in people])
     return json.dumps({'people': people, 'statistics': { 'average': stats.get_avg(), 
                        'dispersion': stats.get_dispersion(), 'deviation': stats.get_avg_deviation(), 'mode': stats.get_mode()}})
-
+#TODO: rename routes
 @app.route('/api/remove/<id>',  methods=["DELETE"])
 def remove(id):
     manService.removeMan(id)

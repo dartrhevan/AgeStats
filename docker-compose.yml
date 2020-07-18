@@ -1,0 +1,14 @@
+version: '2.0'
+services:
+  frontend:
+    build: ./frontend
+    ports:
+    - "80:80"
+    volumes:
+    - socket:/var/app
+  backend:
+    build: ./backend
+    volumes:
+    - socket:/var/app
+volumes:
+  socket: 

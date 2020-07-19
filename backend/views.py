@@ -52,7 +52,7 @@ def people_list():
     people = manService.getPeople(min, max, pattern)
     stats = Statistics([m['age'] for m in people])
     return json.dumps({'people': people, 'statistics': { 'average': stats.get_avg(), 
-                       'dispersion': stats.get_dispersion(), 'deviation': stats.get_avg_deviation(), 'mode': stats.get_mode()}})
+                       'dispersion': stats.get_dispersion(), 'deviation': stats.get_avg_deviation(), 'median': stats.get_median()}})
 #TODO: rename routes
 @app.route('/api/remove/<id>',  methods=["DELETE"])
 def remove(id):

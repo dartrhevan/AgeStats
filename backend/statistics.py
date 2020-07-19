@@ -25,14 +25,14 @@ class Statistics:
             self.__disp = sum([i**2 for i in self.__data])  / len(self.__data) - self.get_avg() ** 2
         return self.__disp
 
-    def get_mode(self):
+    def get_median(self):
         count = len(self.__data)
         if count == 0:
             return 0
         elif count % 2:
-            return (self.__data[int(count / 2)] + self.__data[int(count / 2) - 1]) / 2
-        else:
             return self.__data[int(count / 2)]
+        else:            
+            return (self.__data[int(count / 2)] + self.__data[int(count / 2) - 1]) / 2
 
     def get_avg_deviation(self):
         if len(self.__data) == 0:

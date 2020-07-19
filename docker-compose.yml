@@ -1,13 +1,17 @@
 version: '2.0'
 services:
   frontend:
-    build: ./frontend
+    image: dartrhevan/age-stats:frontend #This line is used for deploying on Azure
+    #The following line can be used for local deploying instead of the above one
+    #build: ./frontend
     ports:
     - "80:80"
     volumes:
     - socket:/var/app
   backend:
-    build: ./backend
+    image: dartrhevan/age-stats:backend #This line is used for deploying on Azure
+    #The following line can be used for local deploying instead of the above one
+    #build: ./backend
     volumes:
     - socket:/var/app
 volumes:

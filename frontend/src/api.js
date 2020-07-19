@@ -5,7 +5,7 @@ export async function uploadData(name , age) {
     formData.append('name' , name);
     formData.append('age' , age);
 
-    return fetch('/api/save' , {
+    return fetch('/api/peoples' , {
         method: 'POST' ,
         body: formData
     }).then(r => r.json())
@@ -19,7 +19,7 @@ export async function getData(pattern = '', min = 0, max = 110) {
     formData.append('min', min.toString());
     formData.append('max', max.toString());
 
-    return fetch('/api/people-list', {
+    return fetch('/api/get-peoples', {
         method: 'POST',
         body: formData
     }).then(r => r.json())
@@ -34,7 +34,7 @@ export async function deleteMan(id,  {pattern, min, max}) {
     formData.append('min', min.toString());
     formData.append('max', max.toString());
 
-    return fetch('/api/remove/' + id, {
+    return fetch('/api/peoples/' + id, {
         method: 'DELETE',
         body: formData
     }).catch(e => console.log(e));
@@ -52,7 +52,7 @@ export async function updateMan(id, name, age, {pattern, min, max}) {
     formData.append('min', min.toString());
     formData.append('max', max.toString());
 
-    return fetch('/api/update' , {
+    return fetch('/api/peoples' , {
         method: 'PUT',
         body: formData
     }).then(r => r.json())

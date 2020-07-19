@@ -1,1 +1,1 @@
-Simple app for calculating age statistics
+Simple app for calculating age statistics: age-statistics.azurewebsites.net

@@ -51,7 +51,7 @@ export default class AddMan extends React.Component {
                 <br/>
                 Deviation: {this.props.statistics.deviation}
                 <br/>
-                Mode: {this.props.statistics.mode}
+                Median: {this.props.statistics.median}
                 <hr/>
             </div>
 

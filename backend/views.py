@@ -14,7 +14,7 @@ manService = ManService()
 def_min = 0
 def_max = 110
 
-@app.route('/api/save', methods=["POST"])
+@app.route('/api/peoples', methods=["POST"])
 def save():
     age = 0
     try:
@@ -39,7 +39,7 @@ def test():
     return 'Hello from Fask!'
 
 
-@app.route('/api/people-list',  methods=["POST"])
+@app.route('/api/get-peoples',  methods=["POST"])
 def people_list():
     max = def_max
     min = def_min
@@ -53,13 +53,13 @@ def people_list():
     stats = Statistics([m['age'] for m in people])
     return json.dumps({'people': people, 'statistics': { 'average': stats.get_avg(), 
                        'dispersion': stats.get_dispersion(), 'deviation': stats.get_avg_deviation(), 'median': stats.get_median()}})
-#TODO: rename routes
-@app.route('/api/remove/<id>',  methods=["DELETE"])
+
+@app.route('/api/peoples/<id>',  methods=["DELETE"])
 def remove(id):
     manService.removeMan(id)
     return people_list()
 
-@app.route('/api/update',  methods=["PUT"])
+@app.route('/api/peoples',  methods=["PUT"])
 def update(): 
     id = None
     age = None

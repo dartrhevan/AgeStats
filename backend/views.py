@@ -51,8 +51,8 @@ def people_list():
         return make_response('{"message":"Incorrect params"}', 400)
     people = manService.getPeople(min, max, pattern)
     stats = Statistics([m['age'] for m in people])
-    return json.dumps({'people': people, 'statistics': { 'average': stats.get_avg(), 
-                       'dispersion': stats.get_dispersion(), 'deviation': stats.get_avg_deviation(), 'median': stats.get_median()}})
+    return json.dumps({'people': people, 'statistics': { 'average': stats.avg, 
+                       'dispersion': stats.dispersion, 'deviation': stats.avg_deviation, 'median': stats.median}})
 
 @app.route('/api/peoples/<id>',  methods=["DELETE"])
 def remove(id):
